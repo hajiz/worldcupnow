@@ -46,8 +46,14 @@ public class SimpleServer {
                 Stage.PRODUCTION,
                 new TestModule()
         );
-      
-        Server server = new Server(9999);
+        
+        int port = 9999;
+        try {
+            port = Integer.valueOf(System.getenv("PORT"));
+        } catch (Exception e1) {
+            log.info("Failed to get port number");
+        }
+        Server server = new Server(port);
         ServletContextHandler context = new ServletContextHandler(server, "/", ServletContextHandler.SESSIONS);
         context.addFilter(GuiceFilter.class, "/*", EnumSet.of(DispatcherType.REQUEST, DispatcherType.ASYNC));
         context.addServlet(DefaultServlet.class, "/*");
@@ -78,6 +84,7 @@ class TestModule extends ServletModule {
     protected void configureServlets() {
         bind(DefaultServlet.class).in(Singleton.class);
         bind(IndexFileServlet.class).in(Singleton.class);
+        bind(ForwardToIndexServlet.class).in(Singleton.class);
         bind(PostResource.class).in(Singleton.class);
         bind(UserResource.class).in(Singleton.class);
         bind(MatchResource.class).in(Singleton.class);
@@ -89,6 +96,7 @@ class TestModule extends ServletModule {
         bind(UserLookup.class).to(UserLookupImpl.class).in(Singleton.class);
         bind(ResultLookup.class).to(ResultLookupImpl.class).in(Singleton.class);
         
+        serve("/").with(ForwardToIndexServlet.class);
         serve("*.html", "*.js", "*.css", "*.png").with(IndexFileServlet.class);
         serve("/*").with(GuiceContainer.class, getJerseyOptions(true));
     }

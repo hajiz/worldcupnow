@@ -3,7 +3,6 @@ package com.hajix.wcn.server;
 import java.util.EnumSet;
 import java.util.Map;
 
-import javax.servlet.DispatcherType;
 import javax.ws.rs.ext.MessageBodyReader;
 import javax.ws.rs.ext.MessageBodyWriter;
 
@@ -55,7 +54,7 @@ public class SimpleServer {
         }
         Server server = new Server(port);
         ServletContextHandler context = new ServletContextHandler(server, "/", ServletContextHandler.SESSIONS);
-        context.addFilter(GuiceFilter.class, "/*", EnumSet.of(DispatcherType.REQUEST, DispatcherType.ASYNC));
+        context.addFilter(GuiceFilter.class, "/*", EnumSet.<javax.servlet.DispatcherType>of(javax.servlet.DispatcherType.REQUEST, javax.servlet.DispatcherType.ASYNC));
         context.addServlet(DefaultServlet.class, "/*");
         String staticsDir = SimpleServer.class.getClassLoader().getResource("statics/").toExternalForm();
         context.setBaseResource(Resource.newResource(staticsDir));

@@ -9,7 +9,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-import org.eclipse.jetty.util.StringUtil;
+import org.apache.commons.lang3.StringUtils;
 
 import com.google.inject.Inject;
 import com.hajix.wcn.model.User;
@@ -37,11 +37,11 @@ public class UserResource {
         String errorMessage = null;
         if (user == null) {
             errorMessage = "Please enter login information";
-        } else if (StringUtil.isBlank(user.getFirstName())) {
+        } else if (StringUtils.isBlank(user.getFirstName())) {
             errorMessage = "Please enter valid first name";
-        } else if (StringUtil.isBlank(user.getLastName())) {
+        } else if (StringUtils.isBlank(user.getLastName())) {
             errorMessage = "Please enter valid last name";
-        } else if (StringUtil.isBlank(user.getUserName())) {
+        } else if (StringUtils.isBlank(user.getUserName())) {
             errorMessage = "Please enter valid user name";
         }
         if (errorMessage != null) {

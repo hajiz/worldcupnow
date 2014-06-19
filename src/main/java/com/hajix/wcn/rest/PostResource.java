@@ -15,8 +15,8 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 import org.apache.commons.lang3.StringEscapeUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
-import org.eclipse.jetty.util.StringUtil;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -57,7 +57,7 @@ public class PostResource {
             throw new WebApplicationException(Response.status(Status.UNAUTHORIZED).entity("relogin").build());
         }
         
-        if (StringUtil.isBlank(content)) {
+        if (StringUtils.isBlank(content)) {
             throw new WebApplicationException(Response.status(Status.BAD_REQUEST).entity("").build());
         }
         

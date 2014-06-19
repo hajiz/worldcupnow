@@ -19,7 +19,7 @@ public enum Match {
     B4(Country.Spain, Country.Chile, 18, 5, 2014, 12),
     A4(Country.Cameroon, Country.Croatia, 18, 5, 2014, 15),
     
-    C3(Country.Colombia, Country.Côte_d_Ivoire, 19, 5, 2014, 9),
+    C3(Country.Colombia, Country.Cote_d_Ivoire, 19, 5, 2014, 9),
     D3(Country.Uruguay, Country.England, 19, 5, 2014, 12),
     C4(Country.Japan, Country.Greece, 19, 5, 2014, 15),
     

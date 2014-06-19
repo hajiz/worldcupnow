@@ -15,7 +15,7 @@ public enum Country {
     Chile("cl"),
     Colombia("co"),
     Costa_Rica("cr"),
-    Côte_d_Ivoire("ci"),
+    Cote_d_Ivoire("ci"),
     Croatia("hr"),
     Ecuador("ec"),
     England("gb"),
@@ -44,7 +44,7 @@ public enum Country {
     }
     
     public String getPrintableName() {
-        if (this == Côte_d_Ivoire) {
+        if (this == Cote_d_Ivoire) {
             return "Côte d'Ivoire";
         }
         return name().replace('_', ' ');
@@ -61,7 +61,7 @@ public enum Country {
     
     public static Country lookup(String name) {
         if (name.equals("Ivory Coast")) {
-            return Country.Côte_d_Ivoire;
+            return Country.Cote_d_Ivoire;
         } else if (name.equals("United States")) {
             return Country.USA;
         } else if (name.equals("South Korea")) {

@@ -45,7 +45,7 @@ public enum Country {
     
     public String getPrintableName() {
         if (this == Cote_d_Ivoire) {
-            return "Côte d'Ivoire";
+            return "Ivory Coast";
         }
         return name().replace('_', ' ');
     }

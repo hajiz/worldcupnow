@@ -57,8 +57,8 @@ public class ResultFetcher {
         Country home = Country.lookup(countries.get(0)),
                 away = Country.lookup(countries.get(1));
         
-        if (result.matches("\\d+–\\d+")) {
-            int indexOf = result.indexOf('–');
+        if (result.matches("\\d+\u2013\\d+")) {
+            int indexOf = result.indexOf('\u2013');
             int homeScore = Integer.parseInt(result.substring(0, indexOf)),
                     awayScore = Integer.parseInt(result.substring(indexOf+1));
             

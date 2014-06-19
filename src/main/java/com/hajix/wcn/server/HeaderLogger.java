@@ -2,6 +2,7 @@ package com.hajix.wcn.server;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.core.Context;
+import javax.ws.rs.core.Cookie;
 
 import org.apache.log4j.Logger;
 
@@ -27,7 +28,13 @@ public class HeaderLogger implements ContainerRequestFilter, ContainerResponseFi
     }
     
     private String getUserName(ContainerRequest request) {
-        return request.getCookies().get("wcnFirstName").getValue() + " " + request.getCookies().get("wcnLastName").getValue();
+        Cookie firstName = request.getCookies().get("wcnFirstName");
+        Cookie lastName = request.getCookies().get("wcnLastName");
+        if (firstName != null && lastName != null) {
+            return firstName.getValue() + " " + lastName.getValue();
+        } else {
+            return "N/A";
+        }
     }
 
     @Override

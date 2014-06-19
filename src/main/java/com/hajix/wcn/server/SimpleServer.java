@@ -97,7 +97,7 @@ class TestModule extends ServletModule {
         bind(ResultLookup.class).to(ResultLookupImpl.class).in(Singleton.class);
         
         serve("/").with(ForwardToIndexServlet.class);
-        serve("*.html", "*.js", "*.css", "*.png").with(IndexFileServlet.class);
+        serve("*.html", "*.js", "*.css", "*.png", "*.ico").with(IndexFileServlet.class);
         serve("/*").with(GuiceContainer.class, getJerseyOptions(true));
     }
     

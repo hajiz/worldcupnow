@@ -39,7 +39,7 @@ public class HeaderLogger implements ContainerRequestFilter, ContainerResponseFi
 
     @Override
     public ContainerResponse filter(ContainerRequest request, ContainerResponse response) {
-        log.info(String.format("%s %s %s (%s) -> %d", req.getRemoteAddr(), request.getMethod(), request.getPath(), getUserName(request), response.getStatus()));
+        log.info(String.format("%s %s %s (%s) -> %d (%s)", req.getRemoteAddr(), request.getMethod(), request.getPath(), getUserName(request), response.getStatus(), req.getHeader("User-Agent")));
         return response;
     }
 

@@ -23,22 +23,27 @@ function post(content, extraCallback) {
 }
 
 var PostLoader = new function () {
-	this.pollInterval = 5000,
-		this.lastSince = 0;
+	this.lastSince = 0;
 	
 	this.loadPosts = function () {
-		var user = getCurrentUserInfo(),
+		var me = this,
+			user = getCurrentUserInfo(),
 			userId = (user && this.lastSince !== 0)? user.userId: -1;
 		$.ajax({
 			url: "post?since=" + this.lastSince,
 			method: "GET",
 			dataType: 'json'
 		}).done(function (posts) {
+			var maxTime = -1;
 			for (var i = 0; i < posts.length; i++) {
 				var post = posts[i];
+				maxTime = Math.max(maxTime, post.timeStamp);
 				if (post.author.userId !== userId) {
 					addPostToBoard(posts[i]);
 				}
+			}
+			if (maxTime !== -1) {
+				me.lastSince = maxTime + 1;
 			}
 		});
 		this.lastSince = new Date().getTime();
@@ -46,7 +51,7 @@ var PostLoader = new function () {
 	
 	this.repeat = function () {
 		PostLoader.loadPosts();
-		setTimeout(PostLoader.repeat, 4000);
+		setTimeout(PostLoader.repeat, 2000);
 	}
 }
 

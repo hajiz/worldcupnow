@@ -11,3 +11,9 @@ function loadMatches() {
 		}
 	});
 }
+
+function startLoadingMatches() {
+	loadMatches();
+	
+	setTimeout(startLoadingMatches, 60000);
+}

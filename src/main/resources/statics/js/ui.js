@@ -30,6 +30,8 @@ function addPostToBoard (post) {
 				.replace(/{lastName}/, author.lastName)
 				.replace(/{content}/, content)
 			);
+	
+	scrollBoardToBottom();
 }
 
 function addMatch(match) {
@@ -94,7 +96,7 @@ function attachUiListeners () {
 	
 	$(loginDialogButtonSelector).click(showLoginForm);
 	
-	loadMatches();
+	startLoadingMatches();
 }
 
 function getFirstName() {

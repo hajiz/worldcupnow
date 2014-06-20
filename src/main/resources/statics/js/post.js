@@ -37,9 +37,9 @@ var PostLoader = new function () {
 			var maxTime = -1;
 			for (var i = 0; i < posts.length; i++) {
 				var post = posts[i];
-				maxTime = Math.max(maxTime, post.timeMs);
 				if (post.author.userId !== userId) {
-					addPostToBoard(posts[i]);
+					addPostToBoard(post);
+					maxTime = Math.max(maxTime, post.timeMs);
 				}
 			}
 			if (maxTime !== -1) {

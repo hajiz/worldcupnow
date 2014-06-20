@@ -27,7 +27,7 @@ public enum Country {
     Iran("ir"),
     Italy("it"),
     Japan("jp"),
-    Korea_Republic("kp"),
+    Korea_Republic("kr"),
     Mexico("mx"),
     Netherlands("nl"),
     Nigeria("ng"),

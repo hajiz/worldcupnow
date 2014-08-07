@@ -66,6 +66,8 @@ public enum Country {
             return Country.USA;
         } else if (name.equals("South Korea")) {
             return Country.Korea_Republic;
+        } else if (name.equals("Bosnia-Herzegovina")) {
+            return Country.Bosnia_and_Herzegovina;
         }
         
         name = name.replace(' ', '_');
